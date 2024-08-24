@@ -15,9 +15,7 @@ function addTarefa(){
         let novoItem = `<div id="${contador}" class="item">
 
             <div class="item-icone">
-                <span  id="icone_${contador}" onclick="marcar(${contador})" class="material-symbols-outlined">
-                        check_circle
-                </span>
+                <span  id="icone_${contador}" onclick="marcar(${contador})" class= "material-symbols-outlined"> circle </span>
             </div>
 
             <div onclick="marcar(${contador})" class="item-texto">
@@ -41,26 +39,27 @@ function addTarefa(){
         }
 }  
 
-function del(id){
+function del(id){ //deletar as tarefas
     var tarefa = document.getElementById(id);
     tarefa.remove();
 
 }
 
-function marcar(id){
+function marcar(id) { //funçaõ de criar a lista e modificar
     var item = document.getElementById(id);
+    var icone = document.getElementById("icone_" + id);
     var classe = item.getAttribute('class');
     
-    if( classe == 'item' ){
-        item.classList.add('item-clicado');
-
-    }else{
+    if (classe == 'item') {
+        item.classList.add('item-clicado');  //Adiciona ou exlui uma ou mais classes ao elemento.
+        icone.textContent = "check_circle";  // Alterar o ícone para "check_circle"
+    } else {
         item.classList.remove('item-clicado');
-
+        icone.textContent = "circle";  // Alterar o ícone de volta para "circle"
     }
 }
 
-input.addEventListener("keyup", function (event){
+input.addEventListener("keyup", function (event){ //add uma tarefa com o botão "enter"
     //se clicar enter(13 numero do botão enter)
     if(event.keyCode === 13){
         event.preventDefault();
